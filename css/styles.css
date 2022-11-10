@@ -226,5 +226,18 @@ section.resume-section .resume-section-content {
   margin-right: 10px;
 }
 
+/*
+* Override bs colors
+*/
+.bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: #69681d !important;
+}
+
+.text-primary {
+  --bs-text-opacity: 1;
+  color: #69681d !important;
+}
+
 
 
