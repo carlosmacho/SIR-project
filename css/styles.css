@@ -1,18 +1,5 @@
 /*
-* Padding to not be croped by the navbar on the left
-*/
-body {
-  padding-top: 3.375rem;
-  color: #6c757d;
-}
-@media (min-width: 992px) {
-  body {
-    padding-top: 0;
-    padding-left: 17rem;
-  }
-}
-/*!
-* Pretty styles for header titles
+* Set font and margins for header titles
 */
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
@@ -23,35 +10,45 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   color: #343a40;
 }
 
+/*
+* Set sizes for each header size
+*/
 h1, .h1 {
   font-size: calc(1.725rem + 5.7vw);
 }
+h2, .h2 {
+  font-size: calc(1.475rem + 2.7vw);
+}
+h3, .h3 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+h4, .h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+h5, .h5 {
+  font-size: 1.25rem;
+}
+h6, .h6 {
+  font-size: 1rem;
+}
+
+/*
+* Adjust titles when changing breakpoints
+*/
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 6rem;
   }
-}
-
-h2, .h2 {
-  font-size: calc(1.475rem + 2.7vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
     font-size: 3.5rem;
   }
 }
-
-h3, .h3 {
-  font-size: calc(1.325rem + 0.9vw);
-}
 @media (min-width: 1200px) {
   h3, .h3 {
     font-size: 2rem;
   }
-}
-
-h4, .h4 {
-  font-size: calc(1.275rem + 0.3vw);
 }
 @media (min-width: 1200px) {
   h4, .h4 {
@@ -59,13 +56,6 @@ h4, .h4 {
   }
 }
 
-h5, .h5 {
-  font-size: 1.25rem;
-}
-
-h6, .h6 {
-  font-size: 1rem;
-}
 /*
 * small ajudstments to margins
 */
@@ -78,10 +68,10 @@ p {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-/*
-* Pretty styles for navbar titles
-*/
 
+/*
+* Makes menu letters look like they have <strong> tag and all uppercase
+*/
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 800;
   letter-spacing: 0.05rem;
@@ -90,16 +80,12 @@ p {
 #sideNav .navbar-toggler:focus {
   outline-color: #d48a6e;
 }
+
 /*
-* Adjusts the nav menu to the side (column)
+* Adjusts the nav menu to the side making it a column menu when hit the breakpoint
 */
-
-
-
-
-
 @media (min-width: 992px) {
-  #sideNav {
+   #sideNav {
     padding-left: 0;
     padding-right: 0;
     text-align: center;
@@ -107,10 +93,8 @@ p {
     top: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
-    width: 17rem;
-    height: 100vh;
   }
+
   /*
   * Center the margins of the navbar
   */
@@ -119,16 +103,32 @@ p {
     margin: auto auto 0;
     padding: 0.5rem;
   }
+  
   /*
-  * Center the profile image of the navbar
+  * Creates a border around the profile image and make it smaller all around
   */
   #sideNav .navbar-brand .img-profile {
-    max-width: 10rem;
-    max-height: 10rem;
-    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+    border: 0.2rem solid rgba(255, 255, 255, 0.2);
   }
+
+  .img-profile2{
+    align-items: center;
+    max-width: 5rem;
+    max-height: 5rem;
+  }
+
+  @media (min-width: 992px) {
+    .img-profile2{
+      align-items: center;
+      max-width: 20rem;
+      max-height: 20rem;
+    }
+  }
+
   /*
-  * Adjusts the profile image to be closer to the menu titles
+  * Adjusts the profile image to be closer to the menu titles (center it)
   */
   #sideNav .navbar-collapse {
     display: flex;
@@ -141,7 +141,6 @@ p {
   * Adjusts the nav menu titles to become a column
   */
   #sideNav .navbar-collapse .navbar-nav {
-    flex-direction: column;
     width: 100%;
   }
   #sideNav .navbar-collapse .navbar-nav .nav-item {
@@ -174,7 +173,7 @@ section.resume-section {
   padding-bottom: 5rem;
 }
 /*
-* Makes the about me icons pretty
+* Makes the connect with me icons bigger, centered and with bg color black
 */
 .social-icons .social-icon {
   display: inline-flex;
@@ -191,9 +190,17 @@ section.resume-section {
 .social-icons .social-icon:last-child {
   margin-right: 0;
 }
+
+/*
+* Change the bg color when hovering the mouse
+*/
 .social-icons .social-icon:hover {
   background-color: #bd5d38;
 }
+
+/*
+* Language and tools icons, make them bigger
+*/
 .dev-icons {
   font-size: 3rem;
 }
@@ -211,6 +218,10 @@ section.resume-section {
 /*
 * Contact form stuff
 */
+.btn{
+  align-items: center;
+  justify-content: center;
+}
 .btn-send {
   font-weight: 300;
   text-transform: uppercase;
