@@ -64,7 +64,7 @@ p {
   margin-bottom: 1rem;
 }
 
-#sideNav {
+#navMenu {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -72,20 +72,20 @@ p {
 /*
 * Makes menu letters look like they have <strong> tag and all uppercase
 */
-#sideNav .navbar-nav .nav-item .nav-link {
+#navMenu .navbar-nav .nav-item .nav-link {
   font-weight: 800;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
 }
-#sideNav .navbar-toggler:focus {
+#navMenu .navbar-toggler:focus {
   outline-color: #d48a6e;
 }
 
 /*
-* Adjusts the nav menu to the side making it a column menu when hit the breakpoint
+* Adjusts the nav menu on breakpoints
 */
 @media (min-width: 992px) {
-   #sideNav {
+   #navMenu {
     padding-left: 0;
     padding-right: 0;
     text-align: center;
@@ -98,7 +98,7 @@ p {
   /*
   * Center the margins of the navbar
   */
-  #sideNav .navbar-brand {
+  #navMenu .navbar-brand {
     display: flex;
     margin: auto auto 0;
     padding: 0.5rem;
@@ -107,7 +107,7 @@ p {
   /*
   * Creates a border around the profile image and make it smaller all around
   */
-  #sideNav .navbar-brand .img-profile {
+  #navMenu .navbar-brand .img-profile {
     max-width: 2.5rem;
     max-height: 2.5rem;
     border: 0.2rem solid rgba(255, 255, 255, 0.2);
@@ -130,7 +130,7 @@ p {
   /*
   * Adjusts the profile image to be closer to the menu titles (center it)
   */
-  #sideNav .navbar-collapse {
+  #navMenu .navbar-collapse {
     display: flex;
     align-items: flex-start;
     flex-grow: 0;
@@ -140,13 +140,13 @@ p {
   /*
   * Adjusts the nav menu titles to become a column
   */
-  #sideNav .navbar-collapse .navbar-nav {
+  #navMenu .navbar-collapse .navbar-nav {
     width: 100%;
   }
-  #sideNav .navbar-collapse .navbar-nav .nav-item {
+  #navMenu .navbar-collapse .navbar-nav .nav-item {
     display: block;
   }
-  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+  #navMenu .navbar-collapse .navbar-nav .nav-item .nav-link {
     display: block;
   }
 }
