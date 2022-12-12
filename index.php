@@ -1,3 +1,8 @@
+<?php
+include "php/connection.php";
+$pdo = pdo_connect_mysql();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -285,7 +290,7 @@
                       </div>
                       <div class="row mt-2">
                         <div class="col-lg-12">
-                            <img src="https://activity-graph.herokuapp.com/graph?username=Ashutosh00710&theme=vue" alt="carlosmacho" />
+                            <img src="https://activity-graph.herokuapp.com/graph?username=carlosmacho&theme=vue" alt="carlosmacho" />
                           </div>                         
                       </div>
                   </div>
