@@ -1,7 +1,7 @@
 /*
 * Set font and margins for header titles
 */
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+h6, h5, h4, h3, h2, h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -11,24 +11,24 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 /*
-* Set sizes for each header size
+* Default sizes for each header size
 */
-h1, .h1 {
+h1 {
   font-size: calc(1.725rem + 5.7vw);
 }
-h2, .h2 {
+h2 {
   font-size: calc(1.475rem + 2.7vw);
 }
-h3, .h3 {
+h3 {
   font-size: calc(1.325rem + 0.9vw);
 }
-h4, .h4 {
+h4 {
   font-size: calc(1.275rem + 0.3vw);
 }
-h5, .h5 {
+h5 {
   font-size: 1.25rem;
 }
-h6, .h6 {
+h6 {
   font-size: 1rem;
 }
 
@@ -57,13 +57,16 @@ h6, .h6 {
 }
 
 /*
-* small ajudstments to margins
+* small ajudstments to margins in paragrahps
 */
 p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
+/*
+* Use of id's to CSS just to show it's also possible to do it this way
+*/
 #navMenu {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -82,7 +85,7 @@ p {
 }
 
 /*
-* Adjusts the nav menu on breakpoints
+* Adjusts the nav menu margins and alignments on breakpoint
 */
 @media (min-width: 992px) {
    #navMenu {
@@ -90,8 +93,6 @@ p {
     padding-right: 0;
     text-align: center;
     position: fixed;
-    top: 0;
-    left: 0;
     display: flex;
   }
 
@@ -113,44 +114,46 @@ p {
     border: 0.2rem solid rgba(255, 255, 255, 0.2);
   }
 
-
+  /*
+  * Default Profile pic size (in first section)
+  */
   .img-profile2{
     align-items: center;
+    max-width: 25rem;
+    max-height: 25rem;
+  }
+}
+/*
+* Profile pic change size when between 2 breakpoints
+*/
+@media (min-width: 1200px) {
+  .img-profile2{
+    max-width: 25rem;
+    max-height: 25rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .img-profile2{
     max-width: 20rem;
     max-height: 20rem;
   }
-  
-  @media (min-width: 768px) and (max-width: 1199.98px) {
-    .img-profile2{
-      max-width: 10rem;
-      max-height: 10rem;
-    }
+}
+@media (min-width: 576px) and (max-width: 768.98px) {
+  .img-profile2{
+    max-width: 15rem;
+    max-height: 15rem;
   }
-
-  /*
-  * Adjusts the profile image to be closer to the menu titles (center it)
-  */
-  #navMenu .navbar-collapse {
-    display: flex;
-    align-items: flex-start;
-    flex-grow: 0;
-    width: 100%;
-    margin-bottom: auto;
-  }
-  /*
-  * Adjusts the nav menu titles to become a column
-  */
-  #navMenu .navbar-collapse .navbar-nav {
-    width: 100%;
-  }
-  #navMenu .navbar-collapse .navbar-nav .nav-item {
-    display: block;
-  }
-  #navMenu .navbar-collapse .navbar-nav .nav-item .nav-link {
-    display: block;
+}
+@media (min-width: 400px) and (max-width: 576.98px) {
+  .img-profile2{
+    max-width: 12rem;
+    max-height: 12rem;
   }
 }
 
+/*
+* One CSS for all the sections present in the html document
+*/
 section.resume-section {
   display: flex;
   align-items: center;
@@ -186,9 +189,6 @@ section.resume-section {
   border-radius: 100%;
   font-size: 1.5rem;
   margin-right: 1.5rem;
-}
-.social-icons .social-icon:last-child {
-  margin-right: 0;
 }
 
 /*
