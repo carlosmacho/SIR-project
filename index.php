@@ -1,5 +1,5 @@
 <?php
-include "php/connection.php";
+include "CMS/db/connection.php";
 $pdo = pdo_connect_mysql();
 ?>
 
@@ -10,7 +10,7 @@ $pdo = pdo_connect_mysql();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/x-icon" href="imgs/favicon-macho.png" />
+    <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-macho.png" />
 
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@ $pdo = pdo_connect_mysql();
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="navMenu">
             <a class="navbar-brand" href="#page-top">
                 <span class="d-block d-lg-none">Carlos Macho</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="imgs/profile.jpg" alt="imagem de perfil" /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/imgs/profile.jpg" alt="imagem de perfil" /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -64,7 +64,7 @@ $pdo = pdo_connect_mysql();
                         </div>
                         <div class="col-lg-3">
                             <div class="resume-section-content">
-                                <span class="d-lg-block"><img class="img-fluid img-profile2 rounded-circle mx-auto mt-4 mb-4" src="imgs/profile.jpg" alt="imagem de perfil" /></span>
+                                <span class="d-lg-block"><img class="img-fluid img-profile2 rounded-circle mx-auto mt-4 mb-4" src="assets/imgs/profile.jpg" alt="imagem de perfil" /></span>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@ $pdo = pdo_connect_mysql();
                                 </h2>
                                 <ul>
                                     <li>
-                                        <strong>Number:</strong> 91X-XXX-XXX
+                                        <strong>Number:</strong>  <a href="tel:+35191XXXXXXX"> 91X-XXX-XXX</a>
                                     </li>
                                     <li class="mb-3">
                                         <strong>Email:</strong> <a href="mailto:carlosmacho@ipvc.pt"> carlosmacho@ipvc.pt</a>
@@ -208,7 +208,7 @@ $pdo = pdo_connect_mysql();
                 <div class="row mb-5 mt-5">
                   <div class="col-lg-4 mb-5">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="imgs/travel.webp" alt="Traveling">
+                        <img class="card-img-top" src="assets/imgs/travel.webp" alt="Traveling">
                         <div class="card-body">
                           <p class="card-text">As much as i love staying in my confortable home, i also love going out to explore new places!</p>
                         </div>
@@ -216,7 +216,7 @@ $pdo = pdo_connect_mysql();
                   </div>
                   <div class="col-lg-4 mb-5">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="imgs/gaming.webp" alt="Gaming">
+                        <img class="card-img-top" src="assets/imgs/gaming.webp" alt="Gaming">
                         <div class="card-body">
                           <p class="card-text">Gaming is in one of my top go-to's in my hobbies!</p>
                           <p class="card-text">Some of my favourites are:</p>
@@ -245,7 +245,7 @@ $pdo = pdo_connect_mysql();
                   </div>
                   <div class="col-lg-4">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="imgs/music.jpg" alt="Music">
+                        <img class="card-img-top" src="assets/imgs/music.jpg" alt="Music">
                         <div class="card-body">
                           <p class="card-text">Can´t live without music. Music is present in my life everywhere i go. Not to mention i also play an instrument!</p>
                         </div>
