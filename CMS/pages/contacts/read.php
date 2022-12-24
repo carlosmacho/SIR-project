@@ -20,6 +20,28 @@ $contact_requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of ..., this is so we can determine whether there should be a next and previous button
 $num_contacts = $pdo->query('SELECT COUNT(*) FROM contact_request')->fetchColumn();
+
+// Check if form was submitted
+if (isset($_POST['save_contact'])) {
+    // Sanitize POST array
+    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    // Get checkbox value
+    $seen = isset($_POST['seen']) ? 1 : 0;
+    // Update contact request
+    $stmt = $pdo->prepare('UPDATE contact_request SET seen = ? WHERE contactID = ?');
+    $stmt->execute([$seen, $_POST['contactID']]);
+    // Set the text of the seen field based on the value of the $seen variable
+    if ($seen) {
+        $seenText = "seen";
+        } else {
+        $seenText = "not seen";
+        }
+    
+        echo $seenText;
+    header('Location: read.php');
+    exit;
+}
+
 ?>
 
 <?=template_header('Read')?>
@@ -38,6 +60,8 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM contact_request')->fetchColumn
                 <td>Last Name</td>
                 <td>Email</td>
                 <td>Message</td>
+                <td>Seen</td>
+                <td>Seen At</td>
                 <td>Created</td>
                 <td></td>
             </tr>
@@ -50,6 +74,24 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM contact_request')->fetchColumn
                 <td><?=$contact['lastname']?></td>
                 <td><?=$contact['email']?></td>
                 <td><?=$contact['message']?></td>
+                <td>
+                <!-- Toggle switch -->
+                <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="flexSwitchCheckDefault" onchange="updateContactRequest(<?=$contact['contactID']?>, this.checked)" <?php echo $contact['seen'] == 1 ? 'checked' : ''; ?>>
+                <label class="form-check-label" id="flexSwitchLabel" for="flexSwitchCheckDefault"><?php echo $contact['seen'] == 1 ? 'seen' : 'not seen'; ?></label>
+                </div>
+                </td>
+                <td>
+                    <?php
+                        if ($contact['seen']) {
+                            // Display the seen_at value from the database if seen is true
+                            echo date('d-m-Y h:i:s a', strtotime($contact['seen_at']));
+                        } else {
+                            // Display "not seen" if seen is false
+                            echo "not seen yet";
+                        }
+                    ?>
+                </td>
                 <td><?=date('d-m-Y h:i:s a', strtotime($contact['created']))?></td>
                 <td class="actions">
                     <a href="update.php?contactID=<?=$contact['contactID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
@@ -71,4 +113,22 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM contact_request')->fetchColumn
 	</div>
 </div>
 
+<!-- JavaScript function to send an AJAX request to update contact request seen status -->
+<script>
+function updateContactRequest(contactID, seen) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'update_seen.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('Contact request updated');
+        }
+        else {
+            console.error('An error occurred');
+        }
+    };
+    xhr.send(`contactID=${contactID}&seen=${seen}`);
+    
+}
+</script>
 <?=template_footer()?>
