@@ -355,9 +355,9 @@ $pdo = pdo_connect_mysql();
                           </div>
                       </div>
                       <div class="row mt-2">
-                        <div class="col-lg-12">
-                            <img src="https://activity-graph.herokuapp.com/graph?username=carlosmacho&theme=vue" alt="carlosmacho" />
-                          </div>                         
+                        <!-- <div class="col-lg-12 d-flex">
+                            <img src="https://github-readme-activity-graph.cyclic.app/graph?username=carlosmacho&theme=vue" alt="carlosmacho" />
+                          </div>                          -->
                       </div>
                   </div>
             </section>
