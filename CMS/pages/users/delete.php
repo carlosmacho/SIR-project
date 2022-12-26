@@ -20,10 +20,10 @@ if (isset($_GET['id'])) {
             $stmt = $pdo->prepare('DELETE FROM users WHERE id = ?');
             $stmt->execute([$_GET['id']]);
             $msg = 'You have deleted the user section! You will be redirected to your account page in 2 seconds....';
-            header("Refresh:2; url=read.php", true, 202);
+            header("Refresh:2; url=../welcome.php", true, 202);
         } else {
             // User clicked the "No" button, redirect them back to the read page
-            header('Location: read.php');
+            header('Location: ../welcome.php');
             exit;
         }
     }

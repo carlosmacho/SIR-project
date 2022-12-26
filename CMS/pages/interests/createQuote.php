@@ -41,4 +41,54 @@ if (!empty($_POST)) {
     <?php endif; ?>
 </div>
 
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Quotes</h4>
+
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Create Quote</h5>
+        </div>
+        <div class="card-body">
+        <form action="createQuote.php" method="post">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="quote_title">Quote Title</label>
+                <div class="col-sm-10">
+                <input type="text" name="quote_title" placeholder="Quote Title" class="form-control" id="quote_title" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="quote_desc">Quote Description</label>
+                <div class="col-sm-10">
+                <textarea class="form-control" name="quote_desc" id="quote_desc" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="quote_author">Quote Author</label>
+                <div class="col-sm-10">
+                <input type="text" name="quote_author" placeholder="Quote Author" class="form-control" id="quote_author" />
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                <button type="submit" value="Create" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- / Content -->
+<?php if ($msg): ?>
+    <p><?=$msg?></p>
+<?php endif; ?>
+
 <?=template_footer()?>

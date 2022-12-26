@@ -34,20 +34,93 @@ if (isset($_GET['connectlinksID'])) {
 
 <?=template_header('Read')?>
 
-<div class="content update">
-	<h2>Update link #<?=$connect_links['connectlinksID']?></h2>
-    <form action="updateLink.php?connectlinksID=<?=$connect_links['connectlinksID']?>" method="post" enctype="multipart/form-data">
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Social Media</h4>
 
-        <label for="link">Link URL</label>
-        <input type="text" name="link" placeholder="Social Media Link" value="<?=$connect_links['link']?>" id="link">
-        <label for="logotype">Logotype</label>
-        <input type="file" name="profile" value="<?=$connect_links['logo']?>" id="profile">
-    
-        <input type="submit" value="Update">
-    </form>
-    <?php if ($msg): ?>
-    <p><?=$msg?></p>
-    <?php endif; ?>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Update Social Media Link #<?=$connect_links['connectlinksID']?></h5>
+        </div>
+        <div class="card-body">
+        <form action="updateLink.php?connectlinksID=<?=$connect_links['connectlinksID']?>" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="link">Link</label>
+                <div class="col-sm-10">
+                <input type="text" name="link" placeholder="Link" value="<?=$connect_links['link']?>"  class="form-control" id="link" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="logo">Link Logotype</label>
+                <div class="col-sm-10">
+                <input type="file" name="profile" value="<?=$connect_links['logo']?>" class="form-control" id="profile" />
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>
+<!-- / Content -->
+<?php if ($msg): ?>
+    <p><?=$msg?></p>
+<?php endif; ?>
 
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Preview/</span> Social Media Links</h4>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Connect with me</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="resume-section-content">
+                                <ul>
+                                    <div class="social-icons">
+                                        <?php
+                                            $output="";
+                                            $stmt = $pdo->prepare("SELECT * FROM connect_links as cl, about_me as ab WHERE cl.aboutmeID = ab.aboutmeID ORDER BY connectlinksID");
+                                            $stmt->execute();
+                                            // Fetch the records so we can display them in our template.
+                                            $links = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                            foreach($links as $row) {
+                                                $link = $row['link'];
+                                                $logo = $row['logo'];
+
+                                            $output .= "<a class='social-icon' href='$link' target='blank'><img width='25' height='25' src='$logo'></a>";     
+                                            }    
+                                            $output .="";
+                                            echo $output;
+                                        ?>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / Content -->
 <?=template_footer()?>

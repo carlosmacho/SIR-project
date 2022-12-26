@@ -45,17 +45,19 @@ echo <<<EOT
 		<title>My CMS</title>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
 		<link href="/SIR-project/utils/style.css" rel="stylesheet" type="text/css">
-
+        
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" href="/SIR-project/assets/css/styles.css">
 
-        <!-- Icons. Uncomment required icon fonts -->
-        <link rel="stylesheet" href="/sneat/assets/vendor/fonts/boxicons.css" />
+        <!-- Icons. required icon fonts -->
+        <link rel="stylesheet" href="/SIR-project/assets/fonts/boxicons.css" />
+
         <!-- Core CSS -->
-        <link rel="stylesheet" href="/sneat/assets/vendor/css/core.css" class="template-customizer-core-css" />
-        <link rel="stylesheet" href="/sneat/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-        <link rel="stylesheet" href="/sneat/assets/css/demo.css" />
+        <link rel="stylesheet" href="/SIR-project/assets/css/core.css" class="template-customizer-core-css" />
+        <link rel="stylesheet" href="/SIR-project/assets/css/theme-default.css" class="template-customizer-theme-css" />
+        <link rel="stylesheet" href="/SIR-project/assets/css/demo.css" />
+
         
 
 	</head>
@@ -73,6 +75,8 @@ EOT;
 }
 function template_footer() {
 echo <<<EOT
+    <!-- Core JS -->
+    <script src="/sneat/assets/vendor/js/bootstrap.js"></script>
     </body>
 </html>
 EOT;

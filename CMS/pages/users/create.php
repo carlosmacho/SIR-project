@@ -141,5 +141,5 @@ if (!empty($_POST)) {
 <!-- / Content -->
 <?php if ($msg): ?>
     <p><?=$msg?></p>
-    <?php endif; ?>
+<?php endif; ?>
 <?=template_footer()?>

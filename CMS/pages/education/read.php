@@ -41,6 +41,7 @@ $num_educations = $pdo->query('SELECT COUNT(*) FROM education')->fetchColumn();
                 <td>Date Start</td>
                 <td>Date End</td>
                 <td>GPA</td>
+                <td>Options</td>
                 <td></td>
             </tr>
         </thead>
@@ -57,8 +58,17 @@ $num_educations = $pdo->query('SELECT COUNT(*) FROM education')->fetchColumn();
                 <td><?=$education['gpa']?></td>
                 <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="update.php?educationID=<?=$education['educationID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="delete.php?educationID=<?=$education['educationID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="update.php?educationID=<?=$education['educationID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="delete.php?educationID=<?=$education['educationID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>

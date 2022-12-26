@@ -30,16 +30,17 @@ if (!empty($_POST)) {
     date_default_timezone_set('Europe/London');
     $created = date('m/d/Y h:i:s a', time());
     // Insert new record into the about_me table
-    $stmt = $pdo->prepare('INSERT INTO contact_request VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$contactID, $firstname, $lastname, $email, $message, $seen, $seen_at, $created]);
+    $stmt = $pdo->prepare('INSERT INTO contact_request VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$contactID, $firstname, $lastname, $email, $message, $seen, $seen_at, $created, 0]);
     // Output message
-    $msg = 'Created Successfully! You will be redirected to your account page in 1 seconds....';
-    header("Refresh:1; url=../../../index.php", true, 103);
-
+    $msg = 'Your message was sent successfully! You will be redirected to the home page in 1 second.';
+    header("Refresh:1; url=../../../index.php", true, 203);
 }
 ?>
 
-<h2>Message Info</h2>
-Your message was sent with success!</h3>
-
+<div class="message">
+    <?php if ($msg): ?>
+    <p><?=$msg?></p>
+    <?php endif; ?>
+</div>
 

@@ -34,20 +34,91 @@ if (isset($_GET['languageID'])) {
 
 <?=template_header('Read')?>
 
-<div class="content update">
-	<h2>Update language #<?=$language['languageID']?></h2>
-    <form action="update.php?languageID=<?=$language['languageID']?>" method="post" enctype="multipart/form-data">
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Languages</h4>
 
-        <label for="language_name">Language Name</label>
-        <input type="text" name="language_name" placeholder="Language Name" value="<?=$language['language_name']?>" id="language_name">
-        <label for="language_icon">Language Icon</label>
-        <input type="file" name="profile" value="<?=$language['language_icon']?>" id="profile">
-
-        <input type="submit" value="Update">
-    </form>
-    <?php if ($msg): ?>
-    <p><?=$msg?></p>
-    <?php endif; ?>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Update Language #<?=$language['languageID']?></h5>
+        </div>
+        <div class="card-body">
+        <form action="update.php?languageID=<?=$language['languageID']?>" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="language_name">Language</label>
+                <div class="col-sm-10">
+                <input type="text" name="language_name" placeholder="language_name" value="<?=$language['language_name']?>"  class="form-control" id="language_name" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="language_icon">Language Icon</label>
+                <div class="col-sm-10">
+                <input type="file" name="profile" value="<?=$language['language_icon']?>" class="form-control" id="profile" />
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>
+<!-- / Content -->
+<?php if ($msg): ?>
+    <p><?=$msg?></p>
+<?php endif; ?>
+
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Preview/</span> Languages</h4>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Languages</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="resume-section-content">
+                                <ul class="list-inline dev-icons">
+                                    <?php
+                                        $output="";
+                                        $stmt = $pdo->prepare("SELECT * FROM languages ORDER BY languageID");
+                                        $stmt->execute();
+                                        // Fetch the records so we can display them in our template.
+                                        $languages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                        
+                                        foreach($languages as $row) {
+                                            $language_icon = $row['language_icon'];
+
+                                            $output .= "<li class='list-inline-item'><img with='50' height='50'src='$language_icon'></li>";     
+                                        }    
+                                        echo $output;  
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / Content -->
 
 <?=template_footer()?>

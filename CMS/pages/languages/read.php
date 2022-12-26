@@ -53,8 +53,17 @@ $num_softskills = $pdo->query('SELECT COUNT(*) FROM soft_skills')->fetchColumn()
                 <img witdh="30" height="30" src="<?php echo $language['language_icon']; ?>">
                 </td>
                 <td class="actions">
-                    <a href="update.php?languageID=<?=$language['languageID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="delete.php?languageID=<?=$language['languageID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="update.php?languageID=<?=$language['languageID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="delete.php?languageID=<?=$language['languageID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -79,6 +88,7 @@ $num_softskills = $pdo->query('SELECT COUNT(*) FROM soft_skills')->fetchColumn()
                 <td>User ID</td>
                 <td>SoftSkill ID</td>
                 <td>SoftSkill Name</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -88,8 +98,17 @@ $num_softskills = $pdo->query('SELECT COUNT(*) FROM soft_skills')->fetchColumn()
                 <td><?=$softskill['softskillID']?></td>
                 <td><?=$softskill['softskill_name']?></td>
                 <td class="actions">
-                    <a href="updateSoftSkill.php?softskillID=<?=$softskill['softskillID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="deleteSoftSkill.php?softskillID=<?=$softskill['softskillID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="updateSoftSkill.php?softskillID=<?=$softskill['softskillID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="deleteSoftSkill.php?softskillID=<?=$softskill['softskillID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <?php endforeach; ?>

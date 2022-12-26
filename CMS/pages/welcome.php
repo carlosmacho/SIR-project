@@ -26,7 +26,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td>User ID</td>
                 <td>Username</td>
                 <td>User Type</td>
-                <td>Options</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +37,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=$user['userType']?></td>
                 <?php if ($_SESSION["userType"] == "Admin" && $_SESSION["id"] != $user["id"]): ?>
                 <td class="actions">
-                    <a href="users/delete.php?id=<?=$user['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="users/delete.php?id=<?=$user['id']?>" class="trash btn btn-icon btn-outline-danger">
+                    <i class="bx bx-trash-alt"></i></a>
                 </td>
                 <?php endif; ?>
             </tr>

@@ -29,7 +29,7 @@ $experiences = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td>Description</td>
                 <td>Date Start</td>
                 <td>Date End</td>
-                <td></td>
+                <td>Options</td>
             </tr>
         </thead>
         <tbody>
@@ -44,8 +44,17 @@ $experiences = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=date('F Y', strtotime($experience['date_end']))?></td>
                 <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="update.php?experienceID=<?=$experience['experienceID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="delete.php?experienceID=<?=$experience['experienceID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="update.php?experienceID=<?=$experience['experienceID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="delete.php?experienceID=<?=$experience['experienceID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>

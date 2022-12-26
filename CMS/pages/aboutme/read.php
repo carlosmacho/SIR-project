@@ -40,7 +40,7 @@ $num_connectlinks = $pdo->query('SELECT COUNT(*) FROM connect_links')->fetchColu
                 <td>Section Description</td>
                 <td>Phone Number</td>
                 <td>Email</td>
-                <td></td>
+                <td>Options</td>
             </tr>
         </thead>
         <tbody>
@@ -58,8 +58,17 @@ $num_connectlinks = $pdo->query('SELECT COUNT(*) FROM connect_links')->fetchColu
                 <td><?=$aboutme['email']?></td>
                 <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="update.php?aboutmeID=<?=$aboutme['aboutmeID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="delete.php?aboutmeID=<?=$aboutme['aboutmeID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="update.php?aboutmeID=<?=$aboutme['aboutmeID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="delete.php?aboutmeID=<?=$aboutme['aboutmeID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>
@@ -80,6 +89,7 @@ $num_connectlinks = $pdo->query('SELECT COUNT(*) FROM connect_links')->fetchColu
                 <td>ConnectLinks ID</td>
                 <td>Link</td>
                 <td>Logotipo</td>
+                <td>Options</td>
             </tr>
         </thead>
         <tbody>
@@ -93,8 +103,17 @@ $num_connectlinks = $pdo->query('SELECT COUNT(*) FROM connect_links')->fetchColu
                 </td>
                 <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="updateLink.php?connectlinksID=<?=$connectlink['connectlinksID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="deleteLink.php?connectlinksID=<?=$connectlink['connectlinksID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="updateLink.php?connectlinksID=<?=$connectlink['connectlinksID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="deleteLink.php?connectlinksID=<?=$connectlink['connectlinksID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>

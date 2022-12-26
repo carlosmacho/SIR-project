@@ -3,6 +3,7 @@ require "../../db/connection.php";
 
 $pdo = pdo_connect_mysql();
 
+date_default_timezone_set('Europe/London');
 // Check if the contactID and seen values were received via POST request
 if (isset($_POST['contactID']) && isset($_POST['seen'])) {
     // Convert seen value to a boolean
@@ -20,5 +21,4 @@ if (isset($_POST['contactID']) && isset($_POST['seen'])) {
 } else {
     echo 'An error occurred';
 }
-
 ?>

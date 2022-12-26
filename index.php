@@ -143,7 +143,6 @@ $pdo = pdo_connect_mysql();
                         </div>
                     </div>
                 </div>
-
             </section>
             <hr class="m-0" />
             <!-- Experience-->
@@ -175,7 +174,7 @@ $pdo = pdo_connect_mysql();
                         }    
                         $output .="";
                         echo $output;
-                        ?>
+                    ?>
                 </div>
             </section>
             <hr class="m-0" />

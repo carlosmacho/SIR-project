@@ -38,30 +38,91 @@ if (!empty($_POST)) {
 
 <?=template_header('Create')?>
 
-<div class="content update">
-	<h2>Create About Me</h2>
-    <form action="create.php" method="post" enctype="multipart/form-data">
 
-        <label for="aboutmeID">aboutmeID</label>
-        <input type="text" name="aboutmeID" disabled placeholder="26" value="auto" id="aboutmeID">
-        <label for="user_name">Title Name</label>
-        <input type="text" name="user_name" placeholder="Titulo principal" id="user_name">
-        <label for="title_desc">Title Descripton</label>
-        <input type="text" name="title_desc" placeholder="subtitulo descricao" id="title_desc">
-        <label for="userPhoto">User Photo</label>
-        <input type="file" name="profile" value="" id=profile/>
-        <label for="section_desc">section Descripton</label>
-        <input type="text" name="section_desc" placeholder="section description" id="section_desc">
-        <label for="phone_number">phone number</label>
-        <input type="text" name="phone_number" placeholder="phone number" id="phone_number">
-        <label for="email">email</label>
-        <input type="text" name="email" placeholder="email here" id="email">
-        
-        <input type="submit" value="Create">
-    </form>
-    <?php if ($msg): ?>
-    <p><?=$msg?></p>
-    <?php endif; ?>
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> About Me</h4>
+
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Create about me</h5>
+        </div>
+        <div class="card-body">
+        <form action="create.php" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="aboutmeID">About Me ID</label>
+                <div class="col-sm-10">
+                <input type="text" name="aboutmeID" disabled value="auto" placeholder="26" class="form-control" id="aboutmeID" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="user_name">Title Name</label>
+                <div class="col-sm-10">
+                <input type="text" name="user_name" placeholder="Title Name" class="form-control" id="user_name" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="title_desc">Title Description</label>
+                <div class="col-sm-10">
+                <input type="text" name="title_desc" placeholder="Title Description" class="form-control" id="title_desc" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="profile">User Photo</label>
+                <div class="col-sm-10">
+                <input type="file" name="profile" placeholder="User Photo" class="form-control" id="profile" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="section_desc">Section Description</label>
+                <div class="col-sm-10">
+                <textarea class="form-control" name="section_desc" id="section_desc" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="phone_number">Phone Number</label>
+                <div class="col-sm-10">
+                <input type="text" name="phone_number" placeholder="Phone Number" class="form-control" id="phone_number" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="email">Email</label>
+                <div class="col-sm-10">
+                <div class="input-group input-group-merge">
+                    <input
+                    type="text"
+                    id="email"
+                    class="form-control"
+                    placeholder="Email"
+                    aria-label="username"
+                    aria-describedby="basic-default-email2"
+                    name="email"
+                    required="required" 
+                    data-error="Please enter your email *"
+                    />
+                    <span class="input-group-text" id="basic-default-email2">@example.com</span>
+                </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                <button type="submit" value="Create" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>
+<!-- / Content -->
+<?php if ($msg): ?>
+    <p><?=$msg?></p>
+<?php endif; ?>
 
 <?=template_footer()?>

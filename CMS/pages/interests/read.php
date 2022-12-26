@@ -44,7 +44,7 @@ $num_quotes = $pdo->query('SELECT COUNT(*) FROM quotes')->fetchColumn();
                 <td>Card ID</td>
                 <td>Card Image</td>
                 <td>Card Description</td>
-                <td></td>
+                <td>Options</td>
             </tr>
         </thead>
         <tbody>
@@ -58,8 +58,17 @@ $num_quotes = $pdo->query('SELECT COUNT(*) FROM quotes')->fetchColumn();
                 <td><?=$interest['card_desc']?></td>
                 <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="update.php?cardID=<?=$interest['cardID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="delete.php?cardID=<?=$interest['cardID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="update.php?cardID=<?=$interest['cardID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="delete.php?cardID=<?=$interest['cardID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>
@@ -89,6 +98,7 @@ $num_quotes = $pdo->query('SELECT COUNT(*) FROM quotes')->fetchColumn();
                 <td>Quote Title</td>
                 <td>Quote Description</td>
                 <td>Quote Author</td>
+                <td>Options</td>
             </tr>
         </thead>
         <tbody>
@@ -101,8 +111,17 @@ $num_quotes = $pdo->query('SELECT COUNT(*) FROM quotes')->fetchColumn();
                 <td><?=$quote['quote_author']?></td>
                 <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="updateQuote.php?quoteID=<?=$quote['quoteID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="deleteQuote.php?quoteID=<?=$quote['quoteID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="updateQuote.php?quoteID=<?=$quote['quoteID']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                            <a class="dropdown-item" href="deleteQuote.php?quoteID=<?=$quote['quoteID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>

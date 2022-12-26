@@ -34,33 +34,98 @@ if (isset($_GET['cardID'])) {
 
 <?=template_header('Read')?>
 
-<div class="content update">
-	<h2>Update Interest Card #<?=$interest['cardID']?></h2>
-    <form action="update.php?cardID=<?=$interest['cardID']?>" method="post" enctype="multipart/form-data">
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Interest Cards</h4>
 
-        <label for="card_img">Card Image</label>
-        <input type="file" name="profile" value="<?=$interest['card_img']?>" id="profile">
-        <label for="card_desc">Card Description</label>
-        <input type="text" name="card_desc" placeholder="Card Description" value="<?=$interest['card_desc']?>" id="card_desc">
-
-        <input type="submit" value="Update">
-    </form>
-    
-    <?php if ($msg): ?>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Update Interest Card #<?=$interest['cardID']?></h5>
+        </div>
+        <div class="card-body">
+        <form action="update.php?cardID=<?=$interest['cardID']?>" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="card_img">Card Image</label>
+                <div class="col-sm-10">
+                <input type="file" name="profile" placeholder="Card Image" value="<?=$interest['card_img']?>"  class="form-control" id="profile" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="card_desc">Card Description</label>
+                <div class="col-sm-10">
+                <textarea class="form-control" name="card_desc" id="card_desc" rows="3"><?=$interest['card_desc']?></textarea>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- / Content -->
+<?php if ($msg): ?>
     <p><?=$msg?></p>
-    <?php endif; ?>
+<?php endif; ?>
 
-    <h2>Preview</h2>
-    <div class="row mb-5 mt-5">
-        <div class="col-lg-4 mb-5">
-            <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<?php echo $interest['card_img']; ?>">
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Preview/</span> Interest Cards</h4>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Interest Cards</h5>
+                </div>
                 <div class="card-body">
-                    <p class="card-text"><?=$interest['card_desc']?></p>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="resume-section-content">
+                                <div class="row mb-5 mt-5">
+                                    <?php
+                                        $output="";
+                                        $stmt = $pdo->prepare("SELECT * FROM interests ORDER BY cardID");
+                                        $stmt->execute();
+                                        // Fetch the records so we can display them in our template.
+                                        $interests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                        
+                                        foreach($interests as $row) {
+                                            $card_img = $row['card_img'];
+                                            $card_desc = $row['card_desc'];
+
+                                            $output .= "<div class='col-lg-4 mb-5'>
+                                            <div class='card' style='width: 18rem;''>
+                                                <img class='card-img-top' src='$card_img'>
+                                                <div class='card-body'>
+                                                    <p class='card-text'>$card_desc</p>
+                                                </div>
+                                            </div>
+                                        </div>";     
+                                        }    
+                                        echo $output;  
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<!-- / Content -->
 <?=template_footer()?>

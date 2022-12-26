@@ -31,27 +31,71 @@ if (!empty($_POST)) {
 
 <?=template_header('Create')?>
 
-<div class="content update">
-	<h2>Create New Experience</h2>
-    <form action="create.php" method="post">
-        <label for="experienceID">experienceID</label>
-        <input type="text" name="experienceID" disabled placeholder="26" value="auto" id="experienceID">
-        <label for="job_title">Job Title</label>
-        <input type="text" name="job_title" placeholder="Job Title" id="job_title">
-        <label for="company_title">Company Title</label>
-        <input type="text" name="company_title" placeholder="Company Title" id="company_title">
-        <label for="description">Descripton</label>
-        <input type="text" name="description" placeholder="Description" id="description">
-        <label for="date_start">Start Date</label>
-        <input type="month" name="date_start" placeholder="Start Date" id="date_start">
-        <label for="date_end">End Date</label>
-        <input type="month" name="date_end" placeholder="End Date" id="date_end">
-        
-        <input type="submit" value="Create">
-    </form>
-    <?php if ($msg): ?>
-    <p><?=$msg?></p>
-    <?php endif; ?>
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Experiences</h4>
+
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Create a experience</h5>
+        </div>
+        <div class="card-body">
+            <form action="create.php" method="post">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="experienceID">Experience ID</label>
+                <div class="col-sm-10">
+                <input type="text" name="experienceID" disabled placeholder="Experience ID" value="auto" class="form-control" id="experienceID" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="job_title">Job Title</label>
+                <div class="col-sm-10">
+                <input type="text" name="job_title" placeholder="Job Title" class="form-control" id="job_title" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="company_title">Company Name</label>
+                <div class="col-sm-10">
+                <input type="text" name="company_title" placeholder="Company Name" class="form-control" id="company_title" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="description">Description</label>
+                <div class="col-sm-10">
+                <input type="text" name="description" placeholder="Description" class="form-control" id="description" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="date_start">Start Date</label>
+                <div class="col-sm-10">
+                <input type="month" name="date_start" placeholder="Start Date" class="form-control" id="date_start" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="date_end">End Date</label>
+                <div class="col-sm-10">
+                <input type="month" name="date_end" placeholder="End Date" class="form-control" id="date_end" />
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                <button type="submit" value="Create" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>
+<!-- / Content -->
+<?php if ($msg): ?>
+    <p><?=$msg?></p>
+<?php endif; ?>
 
 <?=template_footer()?>

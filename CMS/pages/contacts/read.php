@@ -63,6 +63,7 @@ if (isset($_POST['save_contact'])) {
                 <td>Seen</td>
                 <td>Seen At</td>
                 <td>Created</td>
+                <td>Options</td>
                 <td></td>
             </tr>
         </thead>
@@ -94,10 +95,22 @@ if (isset($_POST['save_contact'])) {
                 </td>
                 <td><?=date('d-m-Y h:i:s a', strtotime($contact['created']))?></td>
                 <td class="actions">
-                    <a href="update.php?contactID=<?=$contact['contactID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <?php if ($_SESSION["userType"] == "Admin"): ?>
-                    <a href="delete.php?contactID=<?=$contact['contactID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                    <?php endif; ?>
+                    <button class="btn btn-primary" onclick="openMailClient('<?=$contact['firstname']?>', '<?=$contact['lastname']?>', '<?=$contact['email']?>')">Reply</button>
+                </td>
+                <td>
+                    <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                        <div class="dropdown-menu">
+                            <!-- <a class="dropdown-item" href="mailto:<?=$contact['email']?>?subject=<?=$contact['firstname']?><?=$contact['lastname']?>">
+                                <i class="bx bx-edit-alt me-1"></i>Reply</a> -->
+                            <?php if ($_SESSION["userType"] == "Admin"): ?>
+                            <a class="dropdown-item" href="delete.php?contactID=<?=$contact['contactID']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -128,7 +141,23 @@ function updateContactRequest(contactID, seen) {
         }
     };
     xhr.send(`contactID=${contactID}&seen=${seen}`);
-    
 }
+
+function openMailClient(firstname, lastname, email) {
+    // Set the email subject and body
+    let subject = `Re: Contact request from ${firstname} ${lastname}`;
+    let body = `Dear ${firstname} ${lastname},\n\nThank you for your contact request.\n\nSincerely,\nCarlos Macho`;
+
+    // Encode the subject and body for use in the mailto: URI
+    let encodedSubject = encodeURIComponent(subject);
+    let encodedBody = encodeURIComponent(body);
+
+    // Construct the mailto: URI
+    let mailtoURI = `mailto:${email}?subject=${encodedSubject}&body=${encodedBody}`;
+
+    // Open the default mail client with the mailto: URI
+    window.location.href = mailtoURI;
+  }
+
 </script>
 <?=template_footer()?>
