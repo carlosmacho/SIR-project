@@ -1,4 +1,10 @@
 /*
+* Remove 000webhost watermark
+*/
+
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none !important;}
+
+/*
 * Set font and margins for header titles
 */
 h6, h5, h4, h3, h2, h1 {

@@ -76,7 +76,7 @@ EOT;
 function template_footer() {
 echo <<<EOT
     <!-- Core JS -->
-    <script src="/sneat/assets/vendor/js/bootstrap.js"></script>
+    <script src="/SIR-project/assets/js/bootstrap.js"></script>
     </body>
 </html>
 EOT;

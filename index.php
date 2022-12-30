@@ -371,7 +371,7 @@ $pdo = pdo_connect_mysql();
         <div class="col-lg-7 mx-auto">
             <div class="card mt-2 mx-auto p-4 bg-light">
                 <div class="card-body bg-light">
-                    <form id="contact-form" role="form" action="/SIR-Project/CMS/pages/contacts/createForm.php" method="post">
+                    <form id="contact-form" role="form" action="/SIR-project/CMS/pages/contacts/createForm.php" method="post">
                         <div class="controls">
                             <div class="row">
                                 <div class="col-md-6">
