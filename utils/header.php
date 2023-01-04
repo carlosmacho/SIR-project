@@ -19,6 +19,7 @@ function create_menu() {
         echo '<a href="/SIR-project/CMS/pages/languages/read.php">Skills</a>';
         echo '<a href="/SIR-project/CMS/pages/interests/read.php">Interests</a>';
         echo '<a href="/SIR-project/CMS/pages/contacts/read.php">Contacts</a>';
+        echo '<a href="/SIR-project/CMS/pages/net-salary/calculate-net-salary.php">Net Salary</a>';
 
     } else if ($userRole == "Manager") {
         // Create menu for manager
@@ -29,6 +30,7 @@ function create_menu() {
         echo '<a href="/SIR-project/CMS/pages/languages/read.php">Skills</a>';
         echo '<a href="/SIR-project/CMS/pages/interests/read.php">Interests</a>';
         echo '<a href="/SIR-project/CMS/pages/contacts/read.php">Contacts</a>';
+        echo '<a href="/SIR-project/CMS/pages/net-salary/calculate-net-salary.php">Net Salary</a>';
     }
 }
 
