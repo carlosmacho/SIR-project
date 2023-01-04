@@ -1,12 +1,13 @@
 <?php
 include "CMS/db/connection.php";
 $pdo = pdo_connect_mysql();
+include "utils/count-visitors.php";
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Professional Profile</title>
+    <title>Carlos Macho</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
