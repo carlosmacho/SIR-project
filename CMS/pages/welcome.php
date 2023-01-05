@@ -34,8 +34,9 @@ $visitors = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <thead>
             <tr>
                 <td>Visitor ID</td>
-                <td>Visitor IP Address</td>
-                <td>Visitor Time Of Visit</td>
+                <td>IP Address</td>
+                <td>Device Accessed</td>
+                <td>Time Of Visit</td>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +44,7 @@ $visitors = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <td><?=$visitor['id']?></td>
                 <td><?=$visitor['ip_address']?></td>
+                <td><?=$visitor['device']?></td>
                 <td><?=$visitor['visit_time']?></td>
             </tr>
             <?php endforeach; ?>
@@ -57,6 +59,7 @@ $visitors = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 		<?php endif; ?>
 	</div>
 </div>
+
 <div class="content read">
     <h2>Users</h2>
     <!-- To hide the "Create User" link if the user already has an "About me" section, we wrap the link in an if statement and check if the $users variable is empty or not.-->

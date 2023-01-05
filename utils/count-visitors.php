@@ -10,7 +10,27 @@ date_default_timezone_set('Europe/London');
 $visit_time = date('m/d/Y h:i:s a', time());
 if ($count == 0) {
     // The visitor is new, add them to the database
-    $query = $pdo->prepare("INSERT INTO visitors (ip_address, visit_time) VALUES (?, ?)");
-    $query->execute([$ip_address, $visit_time]);
+    $device = get_device();  // Call the function to get the visitor's device
+    $query = $pdo->prepare("INSERT INTO visitors (ip_address, device, visit_time) VALUES (?, ?, ?)");
+    $query->execute([$ip_address, $device, $visit_time]);
+}
+
+
+/**
+ * Function to get the visitor's device (e.g. desktop, mobile, tablet)
+ *
+ * @return string The device type (desktop, mobile, tablet)
+ */
+function get_device() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $device = 'desktop';
+
+    if (preg_match('/mobile/i', $user_agent)) {
+        $device = 'mobile';
+    } elseif (preg_match('/tablet/i', $user_agent)) {
+        $device = 'tablet';
+    }
+
+    return $device;
 }
 ?>
