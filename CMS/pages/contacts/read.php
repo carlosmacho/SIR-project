@@ -98,11 +98,11 @@ if (isset($_POST['save_contact'])) {
                     <button class="btn btn-primary" onclick="openMailClient('<?=$contact['firstname']?>', '<?=$contact['lastname']?>', '<?=$contact['email']?>')">Reply</button>
                 </td>
                 <td>
+                <?php if ($_SESSION["userType"] == "Admin"): ?>
                     <div class="dropdown">
                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                         <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
-                    <?php if ($_SESSION["userType"] == "Admin"): ?>
                         <div class="dropdown-menu">
                             <!-- <a class="dropdown-item" href="mailto:<?=$contact['email']?>?subject=<?=$contact['firstname']?><?=$contact['lastname']?>">
                                 <i class="bx bx-edit-alt me-1"></i>Reply</a> -->
