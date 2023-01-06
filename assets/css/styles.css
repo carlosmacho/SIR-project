@@ -1,7 +1,6 @@
 /*
 * Remove 000webhost watermark
 */
-
 img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {display: none !important;}
 
 /*
@@ -222,29 +221,6 @@ section.resume-section {
 }
 
 /*
-* Contact form stuff
-*/
-.btn{
-  align-items: center;
-  justify-content: center;
-}
-.btn-send {
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  width: 80%;
-  margin-left: 3px;
-  }
-.help-block.with-errors {
-  color: #ff5050;
-  margin-top: 5px;
-}
-.card{
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/*
 * Override bs colors
 */
 .bg-primary {
@@ -290,3 +266,27 @@ section.resume-section {
     right: 20px;
     display: none;
   }
+
+  /*
+* Contact form stuff
+*/
+.btn{
+  align-items: center;
+  justify-content: center;
+}
+.btn-send {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  width: 80%;
+  margin-left: 3px;
+  }
+.help-block.with-errors {
+  color: #ff5050;
+  margin-top: 5px;
+}
+.card{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+

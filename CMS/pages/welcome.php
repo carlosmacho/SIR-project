@@ -81,10 +81,21 @@ $visitors = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=$user['id']?></td>
                 <td><?=$user['username']?></td>
                 <td><?=$user['userType']?></td>
-                <?php if ($_SESSION["userType"] == "Admin" && $_SESSION["id"] != $user["id"]): ?>
+                <?php if ($_SESSION["userType"] == "Admin"): ?>
                 <td class="actions">
-                    <a href="users/delete.php?id=<?=$user['id']?>" class="trash btn btn-icon btn-outline-danger">
-                    <i class="bx bx-trash-alt"></i></a>
+                    <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="users/update.php?id=<?=$user['id']?>">
+                                <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                <?php if ($_SESSION["userType"] == "Admin" && $_SESSION["id"] != $user["id"]): ?>
+                            <a class="dropdown-item" href="users/delete.php?id=<?=$user['id']?>">
+                                <i class="bx bx-trash me-1"></i> Delete</a>
+                <?php endif; ?>
+                        </div>
+                    </div>
                 </td>
                 <?php endif; ?>
             </tr>

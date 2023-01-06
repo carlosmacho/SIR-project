@@ -21,7 +21,9 @@ include "utils/count-visitors.php";
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+     <!-- Style -->
     <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 <body id="page-top">
     <header>
@@ -364,8 +366,8 @@ include "utils/count-visitors.php";
         </div>
     </main>
     <hr class="m-0" />
-    <!-- Contact Form-->
-    <div class="container">
+     <!-- Contact Form-->
+     <div class="container">
         <div class=" text-center mt-5 ">
             <h1 >Contact Form</h1>
         </div>
@@ -417,6 +419,7 @@ include "utils/count-visitors.php";
         </div>
         <!-- /.row-->
     </div>
+    
      <!-- place footer here -->
     <footer id="footer">
         <div class="copyright">

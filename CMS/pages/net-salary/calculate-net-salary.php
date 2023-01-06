@@ -26,7 +26,7 @@ require "../../db/connection.php";
                 <label class="col-sm-2 col-form-label" for="base_salary">Base Salary</label>
                 <div class="col-sm-10">
                 <div class="input-group input-group-merge">
-                  <input type="number" placeholder="1200€" class="form-control" id="base_salary"/>
+                  <input type="number" required placeholder="1200€" class="form-control" id="base_salary" data-error="Please enter gross salary *"/>
                   <span class="input-group-text" id="basic-default-email2">€</span>
                 </div>
                 </div>
@@ -58,7 +58,15 @@ require "../../db/connection.php";
                     />
                     <span class="input-group-text" id="basic-default-email2">€</span>
                 </div>
-                <div class="form-text">You can use letters, numbers & periods</div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="meal_days">How many days did you work?</label>
+                <div class="col-sm-10">
+                <div class="input-group input-group-merge">
+                  <input type="number" placeholder="Enter Meal Days" class="form-control" id="meal_days" value="0" disabled required/>
+                  
+                </div>
                 </div>
             </div>
             <div class="row mb-3">
@@ -74,7 +82,7 @@ require "../../db/connection.php";
                         <th>Gross Salary</th>
                         <th>IRS Tax</th>
                         <th>Social Security Tax</th>
-                        
+                        <th>Meal Allowance Tax</th>
                         
                       </tr>
                     </thead>
@@ -83,15 +91,24 @@ require "../../db/connection.php";
                         <td><span id="gross_salary"></span></td>
                         <td><span id="descontos_irs"></span></td>
                         <td><span id="descontos_ss"></span></td>
+                        <td><span id="meal_allowance_taxed"></span></td>
                       </tr>
                       <tr>
                         <td><strong>The taxes you pay are:</strong></td>
                         <td><span id="taxes"></span> <span id="status"></span></td>
                         <td></td>
+                        <td></td>
                       </tr>
                       <tr>
                         <td><strong>Your net salary is:</strong></td>
                         <td><span id="net_salary"></span></td> 
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Received as meal allowance:</strong></td>
+                        <td><span id="meal_allowance_value"></span></td> 
+                        <td></td>
                         <td></td>
                       </tr>
                     </tbody>
@@ -106,15 +123,10 @@ require "../../db/connection.php";
                 <button class="btn btn-primary" id="calculate">Calculate</button>
                 </div>
             </div>
-            
-            
         </div>
         </div>
     </div>
     
 </div>
 
-
-    
-    
 <?=template_footer()?>

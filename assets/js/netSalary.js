@@ -1,51 +1,42 @@
 window.addEventListener("load", () => {
   let taxes = {
     710: 0,
-    720: 1.8,
-    740: 4.5,
-    760: 5,
-    822: 7.9,
-    931: 10.1,
     1015: 11.3,
-    1075: 12.1,
-    1154: 13.1,
-    1237: 14.1,
-    1333: 15.2,
-    1437: 16.2,
     1577: 17.2,
-    1727: 18.6,
-    1887: 19.9,
-    1995: 20.9,
     2109: 21.9,
-    2238: 22.8,
-    2389: 23.8,
-    2558: 24.8,
-    2792: 25.8,
-    3132: 27,
-    3566: 28.6,
-    4156: 29.7,
-    4692: 31.4,
     5241: 32.3,
-    5933: 33.3,
-    6788: 35.3,
-    8011: 36.3,
-    9647: 38.2,
     11384: 39.2,
-    19024: 40.2,
-    20403: 41.2,
-    22954: 41.9,
-    25504: 42.9,
     25505: 43.8,
-  };
+};
   let typeMealAllowance = document.getElementById("meal_allowance");
   let mealAllowance = document.getElementById("meal_allowance_amount");
+  let mealDays = document.getElementById("meal_days");
 
   typeMealAllowance.addEventListener("change", () => {
     if (typeMealAllowance.value === "no_allowance") {
-      mealAllowance.value = 0;
-      mealAllowance.disabled = true;
+        mealAllowance.value = 0;
+        mealDays.value = 0;
+        mealAllowance.disabled = true;
+        mealDays.disabled = true;
     } else {
-      mealAllowance.disabled = false;
+        mealAllowance.disabled = false;
+        mealDays.disabled = false;
+    }
+  });
+  
+  mealDays.addEventListener("change", () => {
+    //if already exists error message delete it
+    if (mealDays.parentNode.querySelector("span")) {
+        mealDays.parentNode.querySelector("span").remove();
+        mealDays.style.border = "1px solid #000000";
+    }
+    if (mealDays.value > 31 || mealDays.value < 1) {
+        mealDays.style.border = "1px solid red";
+        let span = document.createElement("span");
+        span.innerHTML = "Please enter a valid number between 1 and 31";
+        span.style.color = "red";
+        span.style.fontWeight = "bold";
+        mealDays.parentNode.appendChild(span);
     }
   });
 
@@ -61,37 +52,43 @@ window.addEventListener("load", () => {
     netSalary,
     grossSalary,
     typeMealAllowance,
-    mealAllowance
+    mealAllowance,
+    mealDays
   ) {
+    let mealAllowanceTaxed = 0;
     if (typeMealAllowance === "no_allowance") {
       return { netSalary: netSalary, grossSalary: grossSalary };
     } else if (typeMealAllowance === "card") {
       if (mealAllowance >= 7.33) {
-        grossSalary = grossSalary + (mealAllowance - 7.33) * 22;
-        netSalary = netSalary + 7.33 * 22;
+        mealAllowanceTaxed = mealAllowance - 7.33;
+        grossSalary = grossSalary + (mealAllowance - 7.33) * mealDays;
+        netSalary = netSalary + 7.33 * mealDays;
       } else {
         netSalary = netSalary + mealAllowance * 22;
       }
     } else if (typeMealAllowance === "money") {
       if (mealAllowance >= 4.57) {
-        grossSalary = grossSalary + (mealAllowance - 4.57) * 22;
+        mealAllowanceTaxed = mealAllowance - 4.57;
+        grossSalary = grossSalary + (mealAllowance - 4.57) * mealDays;
         netSalary = netSalary + 4.57 * 22;
       } else {
-        netSalary = netSalary + mealAllowance * 22;
+        netSalary = netSalary + mealAllowance * mealDays;
       }
     }
-    return { netSalary: netSalary, grossSalary: grossSalary };
+    return { netSalary: netSalary, grossSalary: grossSalary, mealAllowanceTaxed: mealAllowanceTaxed };
   }
   function calculateNetSalary() {
     let netSalaryTemp = 0;
     let grossSalary = +document.getElementById("base_salary").value;
     let typeMealAllowance = document.getElementById("meal_allowance").value;
     let mealAllowance = +document.getElementById("meal_allowance_amount").value;
+    const mealDays = +document.getElementById("meal_days").value;
     const result = calculateMealAllowance(
       netSalaryTemp,
       grossSalary,
       typeMealAllowance,
-      mealAllowance
+      mealAllowance,
+      mealDays
     );
     netSalaryTemp = result.netSalary;
     grossSalary = result.grossSalary;
@@ -110,6 +107,10 @@ window.addEventListener("load", () => {
     document.getElementById("gross_salary").textContent =
       grossSalary.toFixed(2) + "€";
     document.getElementById("taxes").textContent = taxOwed.toFixed(2) + "%";
+    document.getElementById("meal_allowance_value").textContent =
+    (mealDays * mealAllowance).toFixed(2) + "€";
+document.getElementById("meal_allowance_taxed").textContent =
+    (result.mealAllowanceTaxed * mealDays).toFixed(2) + "€";
 
     // Change status column
     let status = "";
