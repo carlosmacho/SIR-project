@@ -45,7 +45,7 @@ $visitors = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=$visitor['id']?></td>
                 <td><?=$visitor['ip_address']?></td>
                 <td><?=$visitor['device']?></td>
-                <td><?=$visitor['visit_time']?></td>
+                <td><?=date('d-m-Y h:i:s a', strtotime($visitor['visit_time']))?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
