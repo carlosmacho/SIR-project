@@ -28,12 +28,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, userType, username, password FROM users WHERE username = :username";
         
+        $sql = "SELECT id, userType, username, password FROM users WHERE username = :username";
+
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $param_username = trim($_POST["username"]);
-            
+
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetch()){
@@ -42,13 +43,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $userRole = $row["userType"];
                         $hashed_password = $row["password"];
                         if(password_verify($password, $hashed_password)){
-                            session_start();
-
+                            #session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                            $_SESSION["userType"] = $userRole;                          
-                            
+                            $_SESSION["userType"] = $userRole;
+/*                             // get photo
+                            $stmt2 = $pdo->prepare('SELECT userPhoto FROM about_me WHERE userID = ?');
+                            $stmt2->execute([$id]);
+                            if($stmt2->rowCount() == 1){
+                              if($row2 = $stmt2->fetch()){
+                                  $userPhoto = $row2["userPhoto"];
+                                  if($userPhoto == ""){
+                                      $userPhoto = "/SIR-project/assets/imgs/default_profile.png";
+                                      $_SESSION["userPhoto"] = $userPhoto;
+                                  }
+                                  else{
+                                      $_SESSION["userPhoto"] = $userPhoto;
+                                  }
+                              }
+                            } */
+
                             //redirect
                             header("location: ../pages/welcome.php");
                         }
