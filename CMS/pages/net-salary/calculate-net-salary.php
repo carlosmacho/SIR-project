@@ -111,6 +111,12 @@ require "../../db/connection.php";
                         <td></td>
                         <td></td>
                       </tr>
+                      <tr>
+                        <td><strong>Total Compensation:</strong></td>
+                        <td><span id="total_compensation"></span></td> 
+                        <td></td>
+                        <td></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>

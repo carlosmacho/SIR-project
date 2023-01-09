@@ -59,18 +59,18 @@ window.addEventListener("load", () => {
     if (typeMealAllowance === "no_allowance") {
       return { netSalary: netSalary, grossSalary: grossSalary };
     } else if (typeMealAllowance === "card") {
-      if (mealAllowance >= 7.33) {
-        mealAllowanceTaxed = mealAllowance - 7.33;
-        grossSalary = grossSalary + (mealAllowance - 7.33) * mealDays;
-        netSalary = netSalary + 7.33 * mealDays;
+      if (mealAllowance >= 7.63) {
+        mealAllowanceTaxed = mealAllowance - 7.63;
+        grossSalary = grossSalary + (mealAllowance - 7.63) * mealDays;
+        netSalary = netSalary + 7.63 * mealDays;
       } else {
         netSalary = netSalary + mealAllowance * 22;
       }
     } else if (typeMealAllowance === "money") {
-      if (mealAllowance >= 4.57) {
-        mealAllowanceTaxed = mealAllowance - 4.57;
-        grossSalary = grossSalary + (mealAllowance - 4.57) * mealDays;
-        netSalary = netSalary + 4.57 * 22;
+      if (mealAllowance >= 4.77) {
+        mealAllowanceTaxed = mealAllowance - 4.77;
+        grossSalary = grossSalary + (mealAllowance - 4.77) * mealDays;
+        netSalary = netSalary + 4.77 * 22;
       } else {
         netSalary = netSalary + mealAllowance * mealDays;
       }
@@ -96,21 +96,18 @@ window.addEventListener("load", () => {
 
     const descontos_ss = grossSalary * (11 / 100);
     const descontos_irs = grossSalary * (taxOwed / 100);
+    const netSalary = grossSalary - descontos_irs - descontos_ss + netSalaryTemp;
 
-    const netSalary =
-      grossSalary - descontos_irs - descontos_ss + netSalaryTemp;
     document.getElementById("net_salary").textContent = netSalary.toFixed(2) + "€";
-    document.getElementById("descontos_irs").textContent =
-      descontos_irs.toFixed(2) + "€";
-    document.getElementById("descontos_ss").textContent =
-      descontos_ss.toFixed(2) + "€";
+    document.getElementById("descontos_irs").textContent = "-" + descontos_irs.toFixed(2) + "€";
+    document.getElementById("descontos_ss").textContent = "-" + descontos_ss.toFixed(2) + "€";
     document.getElementById("gross_salary").textContent =
-      grossSalary.toFixed(2) + "€";
+    grossSalary.toFixed(2) + "€";
     document.getElementById("taxes").textContent = taxOwed.toFixed(2) + "%";
-    document.getElementById("meal_allowance_value").textContent =
-    (mealDays * mealAllowance).toFixed(2) + "€";
-document.getElementById("meal_allowance_taxed").textContent =
-    (result.mealAllowanceTaxed * mealDays).toFixed(2) + "€";
+    document.getElementById("meal_allowance_value").textContent = "+" + (mealDays * mealAllowance).toFixed(2) + "€";
+    document.getElementById("meal_allowance_taxed").textContent = "+" + (result.mealAllowanceTaxed * mealDays).toFixed(2) + "€";
+    document.getElementById("total_compensation").textContent = (netSalary + (mealDays * mealAllowance)).toFixed(2) + "€";
+
 
     // Change status column
     let status = "";
