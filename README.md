@@ -1,4 +1,4 @@
-<h1>Personal CV Websitet</h1>
+<h1>Personal CV Website</h1>
 <h3>Creation of a professional profile page with HTML/CSS/JS/PHP</h3>
  
  
