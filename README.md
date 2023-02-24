@@ -1,16 +1,19 @@
-<h1>SIR-project</h1>
+<h1>Personal CV Websitet</h1>
 <h3>Creation of a professional profile page with HTML/CSS/JS/PHP</h3>
  
- <h3>Steps:</h3>
+ 
  <ol>
    <li>
-   HTML Structure
+   Designed the HTML structure of a personal curricular website from scratch
    </li>
    <li>
-   CSS & Bootstrap implementation to have a responsive and user friendly website.
+   Styled the website using Bootstrap CSS to enhance its appearance and user experience.
    </li>
     <li>
-   PHP & MySQL to create a backoffice
+   Developed a complete backoffice system using PHP that enables easy modifications to the front page.
+   </li>
+   <li>
+Implemented JavaScript to enhance the functionality and user interactions of the website.
    </li>
  </ol
  
